@@ -19,9 +19,7 @@ class PostController extends Controller
         return response()->json([
             'response' => true,
             'count' => count($posts),
-            'results' => [
-              'data' => $posts
-            ]
+            'results' => $posts
         ]);
     }
 
@@ -59,9 +57,7 @@ class PostController extends Controller
         if($post){
             return response()->json([
                 'response' => true,
-                'results' => [
-                  'data' => $post
-                ]
+                'result' => $post
             ]);
         } else return response('', 404);
     }
