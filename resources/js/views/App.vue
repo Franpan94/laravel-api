@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1 class="text-center pt-3">HomePage</h1>
+  <div class="text-center pt-3">
+    <h1>HomePage</h1>
     <MainComponent />
   </div>
 </template>

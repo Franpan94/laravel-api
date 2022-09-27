@@ -1917,10 +1917,18 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     PostCardComponent: _PostCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  data: function data() {
+    return {
+      posts: []
+    };
+  },
   methods: {
     getPosts: function getPosts() {
+      var _this = this;
+
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/posts').then(function (response) {
         console.log(response.data.results);
+        _this.posts = response.data.results;
       });
     }
   },
@@ -1940,7 +1948,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['post']
+});
 
 /***/ }),
 
@@ -1980,7 +1990,18 @@ var render = function render() {
 
   return _c("main", [_c("h3", {
     staticClass: "text-center pt-2"
-  }, [_vm._v("Post")]), _vm._v(" "), _c("PostCardComponent")], 1);
+  }, [_vm._v("Post")]), _vm._v(" "), _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "row"
+  }, _vm._l(_vm.posts, function (post) {
+    return _c("PostCardComponent", {
+      key: post.id,
+      attrs: {
+        post: post
+      }
+    });
+  }), 1)])]);
 };
 
 var staticRenderFns = [];
@@ -2004,7 +2025,19 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_vm._v("\n  sono il post\n")]);
+  return _c("div", {
+    staticClass: "col-4"
+  }, [_c("div", {
+    staticClass: "pt-5"
+  }, [_c("h5", [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("img", {
+    staticClass: "w-50 pt-2",
+    attrs: {
+      src: _vm.post.post_image,
+      alt: _vm.post.title
+    }
+  }), _vm._v(" "), _c("p", {
+    staticClass: "pt-2"
+  }, [_vm._v(_vm._s(_vm.post.post_content.substring(0, 150)) + "...altro")])])]);
 };
 
 var staticRenderFns = [];
@@ -2028,9 +2061,9 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("h1", {
+  return _c("div", {
     staticClass: "text-center pt-3"
-  }, [_vm._v("HomePage")]), _vm._v(" "), _c("MainComponent")], 1);
+  }, [_c("h1", [_vm._v("HomePage")]), _vm._v(" "), _c("MainComponent")], 1);
 };
 
 var staticRenderFns = [];
