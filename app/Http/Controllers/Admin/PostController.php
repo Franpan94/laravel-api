@@ -55,7 +55,7 @@ class PostController extends Controller
                 'required',
                 Rule::unique('posts')->ignore($data['title'], 'title'),
             ],
-            'post_image'=>'required|max:512',
+            'post_image'=>'required|',
             'post_content'=>'min:10|required',
             
         ]);
@@ -116,14 +116,14 @@ class PostController extends Controller
                 'required',
                 Rule::unique('posts')->ignore($dates['title'], 'title'),
             ],
-            'post_image'=>'required|max:512',
+            'post_image'=>'required|',
             'post_content'=>'min:10|required',
         ]);
 
         $dates['user_id'] = Auth::id();
         $dates['post_date'] = new DateTime();
 
-        $dates['post_image'] = Storage::put('upload', $dates['post_image']);
+        $dates['post_image'] = Storage::put('uploads', $dates['post_image']);
         
         
         $post->update($dates);

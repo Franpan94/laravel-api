@@ -16,7 +16,10 @@
     </div>
     <input type="file" name="post_image" id="post_image"  
       required value="{{ old('post_image', $post->post_image) }} "  
-    >
+    > 
+    {{-- <input type="text" name="post_image" id="post_image" class="w-50" 
+      required value="{{ old('post_image', $post->post_image) }} "  
+    > --}}
     @error('post_image')
       <div class="alert alert-danger">{{ $message }}</div>
     @enderror

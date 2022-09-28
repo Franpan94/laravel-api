@@ -1949,7 +1949,16 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['post']
+  props: ['post'],
+  methods: {
+    validURL: function validURL(str) {
+      var regex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+
+      if (!regex.test(str)) {
+        return false;
+      } else return true;
+    }
+  }
 });
 
 /***/ }),
@@ -2029,11 +2038,18 @@ var render = function render() {
     staticClass: "col-4"
   }, [_c("div", {
     staticClass: "pt-5"
-  }, [_c("h5", [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("img", {
+  }, [_c("h6", {
+    staticClass: "font-weight-bold"
+  }, [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _vm.validURL(_vm.post.post_image) ? _c("img", {
     staticClass: "w-50 pt-2",
     attrs: {
       src: _vm.post.post_image,
       alt: _vm.post.title
+    }
+  }) : _c("img", {
+    attrs: {
+      src: "storage/" + _vm.post.post_image,
+      alt: ""
     }
   }), _vm._v(" "), _c("p", {
     staticClass: "pt-2"
