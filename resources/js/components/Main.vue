@@ -62,7 +62,7 @@ export default {
 
                 let listPosts = this.posts[i].title.toLowerCase();
                 
-                this.posts[i].visible = listPosts.includes(currentword);
+                this.posts[i] = listPosts.includes(currentword);
             }
         }
      },
