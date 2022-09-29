@@ -55,7 +55,7 @@ class PostController extends Controller
                 'required',
                 Rule::unique('posts')->ignore($data['title'], 'title'),
             ],
-            'post_image'=>'required|',
+            'post_image'=>'mimes:jpeg,bmp,png,jpg|required',
             'post_content'=>'min:10|required',
             
         ]);
@@ -116,7 +116,7 @@ class PostController extends Controller
                 'required',
                 Rule::unique('posts')->ignore($dates['title'], 'title'),
             ],
-            'post_image'=>'required|',
+            'post_image'=>'mimes:jpeg,bmp,png,jpg|required',
             'post_content'=>'min:10|required',
         ]);
 
